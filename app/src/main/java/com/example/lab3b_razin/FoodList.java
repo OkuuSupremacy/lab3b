@@ -34,6 +34,7 @@ public class FoodList extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.food_list_activity);
+
         gridView = (GridView) findViewById(R.id.gridView);
         list = new ArrayList<>();
         adapter = new FoodListAdapter(this, R.layout.food_items, list);
@@ -55,7 +56,8 @@ public class FoodList extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if(requestCode == 888){
-            if(grantResults.length >0 && grantResults[0] == PERMISSION_GRANTED){
+            if(grantResults.length >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
                 startActivityForResult(intent, 888);
